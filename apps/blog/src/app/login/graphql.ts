@@ -8,10 +8,7 @@ export const CREATE_USER_MUTATION = gql`
     $email: String!
     $password: String!
   ) {
-    createUser(
-      name: $name
-      authProvider: { email: { email: $email, password: $password } }
-    ) {
+    createUser(name: $name, email: $email, password: $password) {
       id
     }
 
