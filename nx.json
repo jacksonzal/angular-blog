@@ -13,6 +13,9 @@
     },
     "blog-e2e": {
       "tags": []
+    },
+    "blog-api": {
+      "tags": []
     }
   }
 }
