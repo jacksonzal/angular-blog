@@ -1,1 +1,8 @@
-<p>login works! Bites</p>
+<form [formGroup]="authForm" (ngSubmit)="confirm()">
+  <label *ngIf="!login"
+    >Name: <input type="name" formControlName="name"
+  /></label>
+  <label>Email: <input type="email" formControlName="email"/></label>
+  <label>Password: <input type="password" formControlName="password"/></label>
+  <button type="submit">Login</button>
+</form>

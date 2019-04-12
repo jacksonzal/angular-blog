@@ -12,7 +12,7 @@ export const CREATE_USER_MUTATION = gql`
       id
     }
 
-    authenticateUser(email: { email: $email, password: $password }) {
+    authenticateUser(mail: $email, password: $password) {
       token
     }
   }
@@ -21,15 +21,16 @@ export const CREATE_USER_MUTATION = gql`
 export interface CreateUserMutationResponse {
   loading: boolean;
   createUser: User;
-  signinUser: {
+  authenticateUser: {
     token: string;
-    user?: User;
+    id: string;
   };
 }
 
 export const SIGNIN_USER_MUTATION = gql`
   mutation SigninUserMutation($email: String!, $password: String!) {
-    authenticateUser(email: { email: $email, password: $password }) {
+    authenticateUser(email: $email, password: $password) {
+      id
       token
     }
   }
@@ -37,8 +38,8 @@ export const SIGNIN_USER_MUTATION = gql`
 
 export interface SigninUserMutationResponse {
   loading: boolean;
-  signinUser: {
+  authenticateUser: {
     token: string;
-    user?: User;
+    id: string;
   };
 }
