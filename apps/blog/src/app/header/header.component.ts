@@ -9,9 +9,14 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  logged = false;
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.isAuthenticated.subscribe(isAuthenticated => {
+      this.logged = isAuthenticated;
+    });
+  }
 
   logout() {
     this.authService.logout();

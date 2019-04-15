@@ -15,6 +15,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { PreviewComponent } from './preview/preview.component';
+import { CreateComponent } from './create/create.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PreviewComponent } from './preview/preview.component';
     LoadingComponent,
     HomeComponent,
     HeaderComponent,
-    PreviewComponent
+    PreviewComponent,
+    CreateComponent,
+    PostComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -1,0 +1,14 @@
+.header {
+  font-family: 'Montserrat', sans-serif;
+  &__nav-link {
+    margin-right: 20px;
+    color: #525962;
+    &--active {
+      color: #d43451;
+    }
+
+    &:hover {
+      color: #d43451;
+    }
+  }
+}

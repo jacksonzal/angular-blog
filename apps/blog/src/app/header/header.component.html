@@ -1,1 +1,21 @@
-<header><button (click)="logout()">Logout!</button></header>
+<header *ngIf="logged" class="header p-3 d-flex justify-content-between">
+  <div></div>
+  <nav class="mx-5 px-sm-5">
+    <a
+      routerLink="/"
+      [routerLinkActive]="['header__nav-link--active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="header__nav-link"
+      >Home</a
+    >
+    <a
+      routerLink="/create"
+      class="header__nav-link"
+      [routerLinkActive]="['header__nav-link--active']"
+      >Create</a
+    >
+    <a (click)="logout()" routerLink="/login" class="header__nav-link"
+      >Logout</a
+    >
+  </nav>
+</header>
