@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  Validators
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
@@ -28,26 +23,31 @@ import { GC_AUTH_TOKEN, GC_USER_ID } from '../constants';
 export class LoginComponent implements OnInit {
   login = true; // switch between Login and SignUp
   authForm: FormGroup;
+  isLoading = false;
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private apollo: Apollo,
-    private fb: FormBuilder
+    private apollo: Apollo
   ) {
-    this.authForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+    this.authForm = new FormGroup({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
   ngOnInit() {
     if (!this.login) {
-      this.authForm.addControl('name', new FormControl());
+      this.authForm.addControl(
+        'name',
+        new FormControl('', [Validators.required])
+      );
     }
   }
 
   confirm() {
+    this.isLoading = true;
+    console.log(this.authForm);
     if (this.login) {
       this.apollo
         .mutate({
@@ -91,6 +91,8 @@ export class LoginComponent implements OnInit {
       SigninUserMutationResponse | CreateUserMutationResponse
     >
   ) {
+    this.isLoading = false;
+
     const id = result.data.authenticateUser.id;
     const token = result.data.authenticateUser.token;
     this.saveUserData(id, token);
@@ -99,10 +101,12 @@ export class LoginComponent implements OnInit {
   }
 
   onError(error: ApolloError) {
+    this.isLoading = false;
+
     alert(error);
   }
 
-  saveUserData(id, token) {
+  saveUserData(id: string, token: string) {
     localStorage.setItem(GC_USER_ID, id);
     localStorage.setItem(GC_AUTH_TOKEN, token);
     this.authService.setUserId(id);

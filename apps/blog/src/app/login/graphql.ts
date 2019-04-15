@@ -12,7 +12,7 @@ export const CREATE_USER_MUTATION = gql`
       id
     }
 
-    authenticateUser(mail: $email, password: $password) {
+    authenticateUser(email: $email, password: $password) {
       token
     }
   }
