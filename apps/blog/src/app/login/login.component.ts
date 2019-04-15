@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
   confirm() {
     this.isLoading = true;
-    console.log(this.authForm);
+
     if (this.login) {
       this.apollo
         .mutate({

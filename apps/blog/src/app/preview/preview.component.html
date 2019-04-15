@@ -1,0 +1,13 @@
+<section class="preview row rounded bg-white">
+  <div class="preview__info col-sm-6 p-3 p-md-5">
+    <h2 class="preview__info__heading mt-sm-5">{{ post.title }}</h2>
+    <div class="preview__info__keywords my-5">{{ showKeywords() }}</div>
+    <button class="preview__info__button">View Post</button>
+  </div>
+  <div
+    class="preview__image col-sm-6 "
+    [ngClass]="{ 'order-sm-first pl-0': index % 2 === 1 }"
+  >
+    <img src="https://picsum.photos/600/500/?random" alt="{{post.title}}" />
+  </div>
+</section>

@@ -1,0 +1,35 @@
+.preview {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 7rem;
+  overflow: hidden;
+
+  &__info {
+    &__heading {
+      font-family: 'Playfair Display SC', serif;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    &__keywords {
+      color: #b3adc6;
+      text-transform: lowercase;
+    }
+
+    &__button {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to top right, #412fca 0%, #a14e9e 100%);
+      color: #fff;
+      padding: 0.5rem 2rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    @media screen and (max-width: 576px) {
+      padding: 0;
+    }
+  }
+}

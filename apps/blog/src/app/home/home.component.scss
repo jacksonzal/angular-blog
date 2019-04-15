@@ -1,0 +1,33 @@
+.home {
+  padding-bottom: 5rem;
+
+  &__heading {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 3px;
+      background-color: #d43451;
+    }
+
+    &::before {
+      content: 'BLOGS';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.05;
+      font-size: 150px;
+      font-weight: bold;
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
+    }
+  }
+}

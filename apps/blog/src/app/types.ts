@@ -14,3 +14,9 @@ export class User {
   password: string;
   links: [Link];
 }
+
+export interface Post {
+  id: string;
+  keywords: string[];
+  title: string;
+}
