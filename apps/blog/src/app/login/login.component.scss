@@ -1,0 +1,37 @@
+.login {
+  height: 100vh;
+  &__box {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    &__form {
+      &__heading {
+        color: #a14e9e;
+      }
+      &__button {
+        border-radius: 20px;
+        background: linear-gradient(to top right, #412fca 0%, #a14e9e 100%);
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+      }
+      label {
+        font-weight: bold;
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+    &__info {
+      background: linear-gradient(to top right, #412fca 0%, #a14e9e 100%);
+      &__button {
+        border-radius: 20px;
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+      }
+    }
+  }
+}

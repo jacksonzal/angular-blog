@@ -18,7 +18,7 @@ import { GC_AUTH_TOKEN, GC_USER_ID } from '../constants';
 @Component({
   selector: 'blog-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   login = true; // switch between Login and SignUp
