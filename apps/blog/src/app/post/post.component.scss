@@ -1,0 +1,23 @@
+.post {
+  &__header {
+    &__heading {
+      font-family: 'Playfair Display SC', serif;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    &__date {
+      font-family: 'Montserrat', sans-serif;
+      color: #d43451;
+    }
+    &__author {
+      font-family: 'Montserrat', sans-serif;
+    }
+  }
+  &__image-container {
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}

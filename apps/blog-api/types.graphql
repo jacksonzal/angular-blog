@@ -11,6 +11,7 @@ type Post @model {
   id: ID! @isUnique
   createdAt: DateTime!
   updatedAt: DateTime!
+  title: String! @migrationValue(value: "This is the title")
   description: String!
   keywords: [String!]!
   url: String!

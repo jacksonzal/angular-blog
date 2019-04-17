@@ -1,6 +1,9 @@
-<header *ngIf="logged" class="header p-3 d-flex justify-content-between">
+<header
+  *ngIf="logged"
+  class="header container py-3 d-flex justify-content-between"
+>
   <div></div>
-  <nav class="mx-5 px-sm-5">
+  <nav class="">
     <a
       routerLink="/"
       [routerLinkActive]="['header__nav-link--active']"

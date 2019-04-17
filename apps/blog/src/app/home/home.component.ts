@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { Subscription } from 'apollo-client/util/Observable';
+import { ALL_POSTS_QUERY, AllPostsQueryResponse } from './graphql';
+
 import { Post } from '../types';
 
 @Component({
@@ -7,21 +11,24 @@ import { Post } from '../types';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  posts: Post[] = [
-    { id: '1', keywords: ['this', 'that'], title: 'This is a BLog Post!' },
-    {
-      id: '2',
-      keywords: ['web', 'development'],
-      title: 'Blog On Web Development!'
-    },
-    {
-      id: '3',
-      keywords: ['elixir', 'react'],
-      title: 'Class Solver Case Study!'
-    }
-  ];
+  posts: Post[] = [];
+  loading = false;
+  private querySubscription: Subscription;
 
-  constructor() {}
+  constructor(private apollo: Apollo) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.querySubscription = this.apollo
+      .watchQuery<AllPostsQueryResponse>({
+        query: ALL_POSTS_QUERY
+      })
+      .valueChanges.subscribe(({ data, loading }) => {
+        this.loading = loading;
+        this.posts = data.allPosts;
+      });
+  }
+
+  ngOnDestroy() {
+    this.querySubscription.unsubscribe();
+  }
 }
