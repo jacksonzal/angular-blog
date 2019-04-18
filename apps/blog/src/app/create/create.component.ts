@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { CREATE_POST_MUTATION, CreatePostMutationResponse } from './graphql';
 import { ApolloQueryResult } from 'apollo-client';
@@ -23,7 +24,7 @@ export class CreateComponent implements OnInit {
 
   public loading = false;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private router: Router, private apollo: Apollo) {}
 
   ngOnInit() {}
 
@@ -43,8 +44,9 @@ export class CreateComponent implements OnInit {
       })
       .subscribe(
         (result: ApolloQueryResult<CreatePostMutationResponse>) => {
-          this.loading = false;
           console.log(result);
+          this.loading = false;
+          this.router.navigate([`/post/${result.data.createPost.id}`]);
         },
         error => {
           this.loading = false;

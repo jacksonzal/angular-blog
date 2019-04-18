@@ -22,5 +22,5 @@ export const CREATE_POST_MUTATION = gql`
 
 export interface CreatePostMutationResponse {
   loading: boolean;
-  post: Post;
+  createPost: Post;
 }
