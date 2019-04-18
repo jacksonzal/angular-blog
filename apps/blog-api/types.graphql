@@ -11,10 +11,11 @@ type Post @model {
   id: ID! @isUnique
   createdAt: DateTime!
   updatedAt: DateTime!
-  title: String! @migrationValue(value: "This is the title")
-  description: String!
+  title: String!
+  description: String
+  content: String!
   keywords: [String!]!
-  url: String!
+  url: String
   postedBy: User @relation(name: "UsersPosts")
 }
 

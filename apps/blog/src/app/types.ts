@@ -19,4 +19,6 @@ export interface Post {
   id: string;
   keywords: string[];
   title: string;
+  content: string;
+  postedBy: User;
 }

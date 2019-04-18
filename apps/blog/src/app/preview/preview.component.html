@@ -2,9 +2,7 @@
   <div class="preview__info col-sm-6 p-3 p-md-5">
     <h2 class="preview__info__heading mt-sm-5">{{ post.title }}</h2>
     <div class="preview__info__keywords my-5">{{ showKeywords() }}</div>
-    <a class="preview__info__button" routerLink="/post/{{ post.id }}"
-      >View Post</a
-    >
+    <a class="blog-button py-2" routerLink="/post/{{ post.id }}">View Post</a>
   </div>
   <div
     class="preview__image col-sm-6 "

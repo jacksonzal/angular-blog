@@ -1,0 +1,37 @@
+.create {
+  min-height: calc(100vh - 56px);
+
+  &__heading {
+    position: relative;
+    margin-bottom: 5rem;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 3px;
+      background-color: #d43451;
+    }
+    &::before {
+      content: 'CREATE';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.05;
+      font-size: 150px;
+      font-weight: bold;
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .ck-editor__editable {
+  min-height: 400px;
+}

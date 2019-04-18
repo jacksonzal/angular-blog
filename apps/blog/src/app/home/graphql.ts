@@ -4,7 +4,7 @@ import { Post } from '../types';
 
 export const ALL_POSTS_QUERY = gql`
   {
-    allPosts {
+    allPosts(orderBy: updatedAt_DESC) {
       id
       title
       keywords

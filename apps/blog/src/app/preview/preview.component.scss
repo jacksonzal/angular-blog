@@ -13,20 +13,6 @@
       color: #b3adc6;
       text-transform: lowercase;
     }
-
-    &__button {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to top right, #412fca 0%, #a14e9e 100%);
-      color: #fff;
-      padding: 0.75rem 2rem;
-      border-radius: 20px;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      &:hover {
-        text-decoration: none;
-      }
-    }
   }
 
   &__image {

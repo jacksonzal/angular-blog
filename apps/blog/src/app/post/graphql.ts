@@ -8,8 +8,7 @@ export const POST_QUERY = gql`
       id
       title
       keywords
-      description
-      url
+      content
       postedBy {
         id
         name

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+.blog-button {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to top right, #412fca 0%, #a14e9e 100%);
+  color: #ffffff;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+}
