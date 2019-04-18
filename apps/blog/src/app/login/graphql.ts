@@ -13,6 +13,7 @@ export const CREATE_USER_MUTATION = gql`
     }
 
     authenticateUser(email: $email, password: $password) {
+      id
       token
     }
   }
