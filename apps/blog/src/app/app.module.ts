@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppComponent } from './app.component';
 
@@ -32,6 +34,8 @@ import { PostComponent } from './post/post.component';
     PostComponent
   ],
   imports: [
+    CKEditorModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
