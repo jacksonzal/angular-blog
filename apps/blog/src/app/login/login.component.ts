@@ -32,18 +32,12 @@ export class LoginComponent implements OnInit {
   ) {
     this.authForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required])
     });
   }
 
-  ngOnInit() {
-    if (!this.login) {
-      this.authForm.addControl(
-        'name',
-        new FormControl('', [Validators.required])
-      );
-    }
-  }
+  ngOnInit() {}
 
   confirm() {
     this.isLoading = true;
@@ -110,5 +104,9 @@ export class LoginComponent implements OnInit {
     localStorage.setItem(GC_USER_ID, id);
     localStorage.setItem(GC_AUTH_TOKEN, token);
     this.authService.setUserId(id);
+  }
+
+  toggleSignIn(): void {
+    this.login = !this.login;
   }
 }

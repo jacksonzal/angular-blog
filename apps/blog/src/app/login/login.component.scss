@@ -1,16 +1,21 @@
 .login {
   height: 100vh;
   &__box {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    @media screen and (min-width: 576px) {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
     &__form {
+      height: 636px;
       &__heading {
         color: #a14e9e;
       }
       &__button {
+        position: absolute;
+        bottom: 8rem;
         border-radius: 20px;
         background: linear-gradient(to top right, #412fca 0%, #a14e9e 100%);
         color: #fff;
@@ -31,6 +36,7 @@
         color: #fff;
         cursor: pointer;
         font-family: 'Montserrat', sans-serif;
+        border: 1px solid #fff;
       }
     }
   }
