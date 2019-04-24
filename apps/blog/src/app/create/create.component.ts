@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { Apollo } from 'apollo-angular';
 import { CREATE_POST_MUTATION, CreatePostMutationResponse } from './graphql';
 import { ApolloQueryResult } from 'apollo-client';
@@ -15,43 +17,49 @@ import { GC_USER_ID } from '../constants';
 })
 export class CreateComponent implements OnInit {
   public Editor = ClassicEditor;
-  public post = {
-    keywords: '',
-    title: '',
-    postedById: localStorage.getItem(GC_USER_ID),
-    content: '<p>Hello, world!</p>'
-  };
-
+  public post: FormGroup;
   public loading = false;
 
   constructor(private router: Router, private apollo: Apollo) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.post = new FormGroup({
+      keywords: new FormControl('', [Validators.required]),
+      content: new FormControl('<p>Hello, world!</p>', [Validators.required]),
+      title: new FormControl('', [Validators.required])
+    });
+  }
 
   submit() {
-    const { content, keywords, title, postedById } = this.post;
-    this.loading = true;
+    const {
+      status,
+      value: { content, keywords, title }
+    } = this.post;
 
-    this.apollo
-      .mutate({
-        mutation: CREATE_POST_MUTATION,
-        variables: {
-          content,
-          keywords: keywords.split(',').map(word => word.trim()),
-          title,
-          postedById
-        }
-      })
-      .subscribe(
-        (result: ApolloQueryResult<CreatePostMutationResponse>) => {
-          console.log(result);
-          this.loading = false;
-          this.router.navigate([`/post/${result.data.createPost.id}`]);
-        },
-        error => {
-          this.loading = false;
-          console.log(error);
-        }
-      );
+    if (status === 'VALID') {
+      this.loading = true;
+
+      this.apollo
+        .mutate({
+          mutation: CREATE_POST_MUTATION,
+          variables: {
+            content,
+            keywords: keywords.split(',').map(word => word.trim()),
+            title,
+            postedById: localStorage.getItem(GC_USER_ID)
+          }
+        })
+        .subscribe(
+          (result: ApolloQueryResult<CreatePostMutationResponse>) => {
+            console.log(result);
+            this.loading = false;
+            this.router.navigate([`/post/${result.data.createPost.id}`]);
+          },
+          error => {
+            this.loading = false;
+            console.log(error);
+          }
+        );
+    }
   }
 }

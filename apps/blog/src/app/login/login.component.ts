@@ -40,43 +40,50 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   confirm() {
-    this.isLoading = true;
+    const {
+      status,
+      value: { email, password, name }
+    } = this.authForm;
 
-    if (this.login) {
-      this.apollo
-        .mutate({
-          mutation: SIGNIN_USER_MUTATION,
-          variables: {
-            email: this.authForm.value.email,
-            password: this.authForm.value.password
-          }
-        })
-        .subscribe(
-          (result: ApolloQueryResult<SigninUserMutationResponse>) => {
-            this.onSuccess(result);
-          },
-          error => {
-            this.onError(error);
-          }
-        );
-    } else {
-      this.apollo
-        .mutate({
-          mutation: CREATE_USER_MUTATION,
-          variables: {
-            name: this.authForm.value.name,
-            email: this.authForm.value.email,
-            password: this.authForm.value.password
-          }
-        })
-        .subscribe(
-          (result: ApolloQueryResult<CreateUserMutationResponse>) => {
-            this.onSuccess(result);
-          },
-          error => {
-            this.onError(error);
-          }
-        );
+    if (status === 'VALID') {
+      this.isLoading = true;
+
+      if (this.login) {
+        this.apollo
+          .mutate({
+            mutation: SIGNIN_USER_MUTATION,
+            variables: {
+              email,
+              password
+            }
+          })
+          .subscribe(
+            (result: ApolloQueryResult<SigninUserMutationResponse>) => {
+              this.onSuccess(result);
+            },
+            error => {
+              this.onError(error);
+            }
+          );
+      } else {
+        this.apollo
+          .mutate({
+            mutation: CREATE_USER_MUTATION,
+            variables: {
+              name,
+              email,
+              password
+            }
+          })
+          .subscribe(
+            (result: ApolloQueryResult<CreateUserMutationResponse>) => {
+              this.onSuccess(result);
+            },
+            error => {
+              this.onError(error);
+            }
+          );
+      }
     }
   }
 
