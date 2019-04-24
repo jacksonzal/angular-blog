@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 
-import { LinkListComponent } from './link-list/link-list.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
-  { path: 'list', component: LinkListComponent, pathMatch: 'full' },
   {
     path: '',
     component: HomeComponent,
