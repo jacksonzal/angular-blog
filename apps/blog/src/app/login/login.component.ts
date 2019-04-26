@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.authForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
-      name: new FormControl('', [Validators.required])
+      name: new FormControl('', this.login ? undefined : [Validators.required])
     });
   }
 
