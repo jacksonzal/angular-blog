@@ -15,7 +15,7 @@ import { Post } from '../types';
 })
 export class PostComponent implements OnInit {
   post: Post;
-  loading = false;
+  loading = true;
   formatDate = format;
   private querySubscription: Subscription;
 

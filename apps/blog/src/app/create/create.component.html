@@ -1,29 +1,35 @@
-<blog-loading [isLoading]="loading"
-  ><div class="create container">
-    <h1 class="create__heading text-center">Create a Blog</h1>
+<div class="create container">
+  <blog-loading [isLoading]="loading"
+    ><div class="">
+      <h1 class="create__heading text-center">Create a Blog</h1>
 
-    <form [formGroup]="post" (ngSubmit)="submit()">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input
-          formControlName="title"
-          id="title"
-          class="form-control"
-          maxlength="120"
-        />
-      </div>
+      <form [formGroup]="post" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            formControlName="title"
+            id="title"
+            class="form-control"
+            maxlength="120"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="keywords">Keywords</label>
-        <input formControlName="keywords" id="keywords" class="form-control" />
-      </div>
+        <div class="form-group">
+          <label for="keywords">Keywords</label>
+          <input
+            formControlName="keywords"
+            id="keywords"
+            class="form-control"
+          />
+        </div>
 
-      <div class="form-group">
-        <label>Content</label>
-        <ckeditor formControlName="content" [editor]="Editor"></ckeditor>
-      </div>
+        <div class="form-group">
+          <label>Content</label>
+          <ckeditor formControlName="content" [editor]="Editor"></ckeditor>
+        </div>
 
-      <button type="submit" class="blog-button my-5">Create Blog</button>
-    </form>
-  </div></blog-loading
->
+        <button type="submit" class="blog-button my-5">Create Blog</button>
+      </form>
+    </div></blog-loading
+  >
+</div>
