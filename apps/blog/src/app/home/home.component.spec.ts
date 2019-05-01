@@ -4,6 +4,7 @@ import {
   ApolloTestingModule,
   ApolloTestingController
 } from 'apollo-angular/testing';
+
 import { HomeComponent } from './home.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { PreviewComponent } from '../preview/preview.component';

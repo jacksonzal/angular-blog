@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
+import { ApolloQueryResult } from 'apollo-client';
 import { Subscription } from 'apollo-client/util/Observable';
-import { ACCOUNT_QUERY, AccountQueryResponse } from './graphql';
+import {
+  ACCOUNT_QUERY,
+  DELETE_POST_MUTATION,
+  AccountQueryResponse
+} from './graphql';
 
 import { User } from '../types';
 
@@ -36,5 +41,48 @@ export class AccountComponent implements OnInit {
 
   ngOnDestroy() {
     this.querySubscription.unsubscribe();
+  }
+
+  deletePost(id: string) {
+    this.loading = true;
+
+    this.apollo
+      .mutate({
+        mutation: DELETE_POST_MUTATION,
+        variables: {
+          id
+        },
+        update: store => {
+          const data: AccountQueryResponse = store.readQuery({
+            query: ACCOUNT_QUERY,
+            variables: { id: localStorage.getItem(GC_USER_ID) }
+          });
+
+          const newPosts = data.User.posts.filter(post => post.id !== id);
+
+          const user = { ...data.User, posts: newPosts };
+          this.user = user;
+
+          store.writeQuery({
+            query: ACCOUNT_QUERY,
+            variables: { id: localStorage.getItem(GC_USER_ID) },
+            data: { ...data, User: user }
+          });
+        },
+        refetchQueries: [
+          {
+            query: ACCOUNT_QUERY,
+            variables: { id: localStorage.getItem(GC_USER_ID) }
+          }
+        ]
+      })
+      .subscribe(
+        () => {
+          this.loading = false;
+        },
+        () => {
+          this.loading = false;
+        }
+      );
   }
 }

@@ -3,7 +3,11 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Apollo } from 'apollo-angular';
-import { CREATE_POST_MUTATION, CreatePostMutationResponse } from './graphql';
+import {
+  ACCOUNT_QUERY,
+  CREATE_POST_MUTATION,
+  CreatePostMutationResponse
+} from './graphql';
 import { ApolloQueryResult } from 'apollo-client';
 
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -47,7 +51,13 @@ export class CreateComponent implements OnInit {
             keywords: keywords.split(',').map(word => word.trim()),
             title,
             postedById: localStorage.getItem(GC_USER_ID)
-          }
+          },
+          refetchQueries: [
+            {
+              query: ACCOUNT_QUERY,
+              variables: { id: localStorage.getItem(GC_USER_ID) }
+            }
+          ]
         })
         .subscribe(
           (result: ApolloQueryResult<CreatePostMutationResponse>) => {

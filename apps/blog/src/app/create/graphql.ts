@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 
 import { Post } from '../types';
 
+export { ACCOUNT_QUERY } from '../account/graphql';
+
 export const CREATE_POST_MUTATION = gql`
   mutation CreatePost(
     $content: String!

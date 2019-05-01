@@ -17,6 +17,14 @@ export const ACCOUNT_QUERY = gql`
   }
 `;
 
+export const DELETE_POST_MUTATION = gql`
+  mutation deletePost($id: ID!) {
+    deletePost(id: $id) {
+      id
+    }
+  }
+`;
+
 export interface AccountQueryResponse {
   loading: boolean;
   User: User;
