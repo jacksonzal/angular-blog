@@ -1,0 +1,29 @@
+.account {
+  min-height: calc(100vh - 56px);
+  max-width: 640px;
+  padding-bottom: 5rem;
+
+  &__profile {
+    &__picture {
+      width: 100px;
+      height: 100px;
+      background: #d43451;
+      border-radius: 50%;
+      border: 2px solid #d43451;
+    }
+  }
+
+  &__posts {
+    &__post {
+      &__icons {
+        color: #525962;
+        i {
+          cursor: pointer;
+          &:hover {
+            color: #d43451;
+          }
+        }
+      }
+    }
+  }
+}

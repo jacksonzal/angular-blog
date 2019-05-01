@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { PreviewComponent } from './preview/preview.component';
 import { CreateComponent } from './create/create.component';
 import { PostComponent } from './post/post.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PostComponent } from './post/post.component';
     HeaderComponent,
     PreviewComponent,
     CreateComponent,
-    PostComponent
+    PostComponent,
+    AccountComponent
   ],
   imports: [
     CKEditorModule,

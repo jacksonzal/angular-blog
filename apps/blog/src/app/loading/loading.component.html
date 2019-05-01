@@ -1,1 +1,2 @@
-<div *ngIf="isLoading">loading...</div>
+<div *ngIf="isLoading; else: show">loading...</div>
+<ng-content #show></ng-content>

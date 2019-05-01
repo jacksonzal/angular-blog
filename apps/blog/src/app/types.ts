@@ -1,10 +1,3 @@
-export class Link {
-  id: string;
-  description: string;
-  url: string;
-  createdAt: string;
-}
-
 export class User {
   id: string;
   createdAt?: string;
@@ -12,7 +5,7 @@ export class User {
   name: string;
   email?: string;
   password?: string;
-  links?: [Link];
+  posts?: Post[];
 }
 
 export interface Post {

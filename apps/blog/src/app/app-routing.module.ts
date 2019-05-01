@@ -5,6 +5,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
+import { AccountComponent } from './account/account.component';
 import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
@@ -17,6 +18,12 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard]
   },

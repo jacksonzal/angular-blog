@@ -6,13 +6,13 @@ import { ALL_POSTS_QUERY, AllPostsQueryResponse } from './graphql';
 import { Post } from '../types';
 
 @Component({
-  selector: 'l-home',
+  selector: 'blog-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   posts: Post[] = [];
-  loading = false;
+  loading = true;
   private querySubscription: Subscription;
 
   constructor(private apollo: Apollo) {}
