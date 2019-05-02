@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.querySubscription = this.apollo
       .watchQuery<AllPostsQueryResponse>({
-        query: ALL_POSTS_QUERY
+        query: ALL_POSTS_QUERY,
+        fetchPolicy: 'network-only'
       })
       .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;

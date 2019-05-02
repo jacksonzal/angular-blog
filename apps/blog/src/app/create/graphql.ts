@@ -26,3 +26,37 @@ export interface CreatePostMutationResponse {
   loading: boolean;
   createPost: Post;
 }
+
+export const EDIT_POST_MUTATION = gql`
+  mutation editPost(
+    $id: ID!
+    $content: String!
+    $keywords: [String!]
+    $title: String!
+  ) {
+    updatePost(content: $content, keywords: $keywords, title: $title, id: $id) {
+      id
+    }
+  }
+`;
+
+export interface EditPostMutationResponse {
+  loading: boolean;
+  updatePost: Post;
+}
+
+export const POST_QUERY = gql`
+  query Post($id: ID!) {
+    Post(id: $id) {
+      id
+      keywords
+      content
+      title
+    }
+  }
+`;
+
+export interface PostQueryResponse {
+  loading: boolean;
+  Post: Post;
+}

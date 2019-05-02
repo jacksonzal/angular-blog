@@ -3,6 +3,7 @@ import {
   ApolloTestingModule,
   ApolloTestingController
 } from 'apollo-angular/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AccountComponent } from './account.component';
 import { LoadingComponent } from '../loading/loading.component';
@@ -14,7 +15,7 @@ describe('AccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ApolloTestingModule],
+      imports: [ApolloTestingModule, RouterTestingModule],
       declarations: [AccountComponent, LoadingComponent]
     }).compileComponents();
   }));

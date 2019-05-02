@@ -32,7 +32,7 @@
               }}</small>
             </div>
             <div class="account__posts__post__icons">
-              <i class="fa fa-pencil-alt mr-3"></i>
+              <i class="fa fa-pencil-alt mr-3" (click)="editPost(post.id)"></i>
               <i class="fa fa-trash" (click)="deletePost(post.id)"></i>
             </div>
           </div>

@@ -1,7 +1,12 @@
 <div class="create container">
   <blog-loading [isLoading]="loading"
     ><div class="">
-      <h1 class="create__heading text-center">Create a Blog</h1>
+      <h1
+        class="create__heading text-center"
+        [ngClass]="{ 'create__heading--edit': edit }"
+      >
+        {{ edit ? 'Edit your Blog' : 'Create a Blog' }}
+      </h1>
 
       <form [formGroup]="post" (ngSubmit)="submit()">
         <div class="form-group">
@@ -28,7 +33,9 @@
           <ckeditor formControlName="content" [editor]="Editor"></ckeditor>
         </div>
 
-        <button type="submit" class="blog-button my-5">Create Blog</button>
+        <button type="submit" class="blog-button my-5">
+          {{ edit ? 'Save Blog' : 'Create Blog' }}
+        </button>
       </form>
     </div></blog-loading
   >

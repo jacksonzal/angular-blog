@@ -29,6 +29,12 @@
         display: none;
       }
     }
+
+    &--edit {
+      &::before {
+        content: 'EDIT';
+      }
+    }
   }
 }
 

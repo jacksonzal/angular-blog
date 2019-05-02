@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Apollo } from 'apollo-angular';
-import { ApolloQueryResult } from 'apollo-client';
 import { Subscription } from 'apollo-client/util/Observable';
 import {
   ACCOUNT_QUERY,
@@ -25,7 +26,7 @@ export class AccountComponent implements OnInit {
   user: User;
   formatDate = format;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private router: Router, private apollo: Apollo) {}
 
   ngOnInit() {
     this.querySubscription = this.apollo
@@ -41,6 +42,10 @@ export class AccountComponent implements OnInit {
 
   ngOnDestroy() {
     this.querySubscription.unsubscribe();
+  }
+
+  editPost(id: string) {
+    this.router.navigate([`/edit/${id}`]);
   }
 
   deletePost(id: string) {
