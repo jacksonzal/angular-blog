@@ -6,6 +6,7 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { PostComponent } from './post.component';
+import { LoadingComponent } from '../loading/loading.component';
 
 describe('PostComponent', () => {
   let component: PostComponent;
@@ -15,7 +16,7 @@ describe('PostComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ApolloTestingModule, RouterTestingModule],
-      declarations: [PostComponent]
+      declarations: [PostComponent, LoadingComponent]
     }).compileComponents();
   }));
 
