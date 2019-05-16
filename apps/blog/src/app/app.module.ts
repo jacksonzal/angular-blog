@@ -18,6 +18,7 @@ import { PreviewComponent } from './preview/preview.component';
 import { CreateComponent } from './create/create.component';
 import { PostComponent } from './post/post.component';
 import { AccountComponent } from './account/account.component';
+import { CommentComponent } from './post/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AccountComponent } from './account/account.component';
     PreviewComponent,
     CreateComponent,
     PostComponent,
-    AccountComponent
+    AccountComponent,
+    CommentComponent
   ],
   imports: [
     CKEditorModule,

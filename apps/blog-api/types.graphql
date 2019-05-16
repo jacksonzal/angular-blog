@@ -17,6 +17,15 @@ type Post @model {
   keywords: [String!]!
   url: String
   postedBy: User @relation(name: "UsersPosts")
+  comments: [Comment!]! @relation(name: "PostComments")
+}
+
+type Comment @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  content: String
+  commentedBy: User @relation(name: "UsersComments")
+  commentedOn: Post @relation(name: "PostComments")
 }
 
 type User @model {
@@ -28,4 +37,5 @@ type User @model {
   password: String
   links: [Link!]! @relation(name: "UsersLinks")
   posts: [Post!]! @relation(name: "UsersPosts")
+  comments: [Comment!]! @relation(name: "UsersComments")
 }

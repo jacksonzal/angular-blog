@@ -22,4 +22,9 @@
       object-position: center;
     }
   }
+  &__comments {
+    &__heading {
+      border-bottom: 1px solid #d43451;
+    }
+  }
 }

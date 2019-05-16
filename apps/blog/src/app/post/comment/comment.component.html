@@ -1,0 +1,6 @@
+<div class="comment mb-3">
+  <div class="comment__content pb-2">{{ comment.content }}</div>
+  <div class="comment__user text-right small">
+    - {{ comment.postedBy.name }}, {{ format(comment.createdAt, 'DD/MM/YYYY') }}
+  </div>
+</div>

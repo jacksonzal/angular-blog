@@ -14,4 +14,11 @@ export interface Post {
   title: string;
   content?: string;
   postedBy?: User;
+  comments?: [Comment];
+}
+
+export interface Comment {
+  id: string;
+  content: string;
+  commentedOn: Post;
 }

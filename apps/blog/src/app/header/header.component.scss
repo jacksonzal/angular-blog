@@ -1,5 +1,8 @@
 .header {
   font-family: 'Montserrat', sans-serif;
+  position: relative;
+  z-index: 1;
+
   &__nav-link {
     margin-right: 20px;
     color: #525962;
